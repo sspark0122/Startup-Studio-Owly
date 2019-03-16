@@ -1,9 +1,8 @@
 //
 //  LogInViewController.swift
-//  Flash Chat
+//  Owly
 //
 //  This is the view controller where users login
-
 
 import UIKit
 import Firebase
@@ -11,7 +10,7 @@ import SVProgressHUD
 
 class LogInViewController: UIViewController {
 
-    //Textfields pre-linked with IBOutlets
+    // Textfields pre-linked with IBOutlets
     @IBOutlet var emailTextfield: UITextField!
     @IBOutlet var passwordTextfield: UITextField!
     
@@ -33,13 +32,19 @@ class LogInViewController: UIViewController {
             (user, error) in
             
             if error != nil {
+                let alert = UIAlertController(title: "Sign In Failed", message: error?.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+                SVProgressHUD.dismiss()
                 print(error!)
+                
             } else {
                 print("Log in successful!")
                 
                 SVProgressHUD.dismiss()
                 
-                self.performSegue(withIdentifier: "goToChat", sender: self)
+//                self.performSegue(withIdentifier: "goToChat", sender: self)
+                self.performSegue(withIdentifier: "goToMain", sender: self)
             }
         }
     }

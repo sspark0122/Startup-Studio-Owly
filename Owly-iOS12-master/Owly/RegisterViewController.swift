@@ -1,9 +1,8 @@
 //
 //  RegisterViewController.swift
-//  Flash Chat
+//  Owly
 //
 //  This is the View Controller which registers new users with Firebase
-//
 
 import UIKit
 import Firebase
@@ -37,14 +36,19 @@ class RegisterViewController: UIViewController {
             (user, error) in
             
             if error != nil {
+                let alert = UIAlertController(title: "Sign In Failed", message: error?.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+                SVProgressHUD.dismiss()
                 print(error!)
+                
             }else{
                 //success
                 print("Registration Successful!")
                 
                 SVProgressHUD.dismiss()
                 
-                self.performSegue(withIdentifier: "goToChat", sender: self)
+                self.performSegue(withIdentifier: "goToMain", sender: self)
             }
         }
 

@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Flash Chat
+//  Owly
 //
 //  Created by Angela Yu on 29/08/2015.
 //  Copyright (c) 2015 London App Brewery. All rights reserved.
@@ -125,21 +125,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.view.layoutIfNeeded()
         }
     }
-
-    
-    ///////////////////////////////////////////
-    
     
     //MARK: - Send & Recieve from Firebase
-    
-    
-    
-    
-    
     @IBAction func sendPressed(_ sender: AnyObject) {
         messageTextfield.endEditing(true)
         
-        //TODO: Send the message to Firebase and save it in our database
+        // Send the message to Firebase and save it in our database
         messageTextfield.isEnabled = false
         sendButton.isEnabled = false
         
@@ -162,7 +153,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    //TODO: Create the retrieveMessages method here:
+    // Create the retrieveMessages method
     func retrieveMessages() {
         let messageDB = Database.database().reference().child("Messages")
         
